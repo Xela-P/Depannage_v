@@ -14,17 +14,11 @@ namespace Depannage
             this.idlike = null;
         }
 
-        public Produit_Like(int idPers, string nom, string prenom, string email, string mdp, string idLike) : base(idPers, nom, prenom, email, mdp)
+        public Produit_Like(int idProduit, string nom, string composition, string type, string couleur, string idLike) : base(idProduit, nom, composition, type, couleur)
         {
             this.idLike = idLike;
         }
-        public Produit_Like(int idPers, string nom, string prenom, string email, string idLike) : base(idPers, nom, prenom, email)
-        {
-            this.idLike = idLike;
-        }
-
-
-        public Produit_Like(string nom, string prenom, string email, string mdp, string idLike) : base(nom, prenom, email, mdp)
+        public Produit_Like(string nom, string composition, string type, string couleur, string idLike) : base(nom, composition, type, couleur)
         {
             this.idLike = idLike;
         }
