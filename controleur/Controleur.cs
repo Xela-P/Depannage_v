@@ -16,30 +16,15 @@ namespace Depannage
             unModele.InsertClient(unClient);
         }
 
-        public static void InsertTechnicien(Technicien unTechnicien)
+        public static void InsertProduit_Like(Produit_Like unProduit_Like)
         {
-            unModele.InsertTechnicien(unTechnicien);
+            unModele.InsertProduit_Like(unProduit_Like);
         }
 
-        public static void InsertIntervention(Intervention uneIntervention)
-        {
-            unModele.InsertIntervention(uneIntervention);
-        }
 
-        public static void DeleteClient(int idclient)
+        public static void DeleteProduit_Like(int idinter)
         {
-            unModele.DeleteClient(idclient);
-
-        }
-
-        public static void DeleteTechnicien(int idtechnicien)
-        {
-            unModele.DeleteTechnicien(idtechnicien);
-        }
-
-        public static void DeleteIntervention(int idinter)
-        {
-            unModele.DeleteIntervention(idinter);
+            unModele.DeleteProduit_Like(idinter);
         }
 
         public static void UpdateClient(Client unClient)
@@ -47,24 +32,14 @@ namespace Depannage
             unModele.UpdateClient(unClient);
         }
 
-        public static void UpdateTechnicien(Technicien unTechnicien)
+        public static void UpdateProduit_Like(Produit_Like unProduit_Like)
         {
-            unModele.UpdateTechnicien(unTechnicien);
-        }
-
-        public static void UpdateIntervention(Intervention uneIntervention)
-        {
-            unModele.UpdateIntervention(uneIntervention);
+            unModele.UpdateProduit_Like(unProduit_Like);
         }
 
         public static Client SelectWhereClient(int idClient)
         {
             return unModele.SelectWhereClient(idClient);
-        }
-
-        public static Technicien SelectWhereTechnicien(int idTechnicien)
-        {
-            return unModele.SelectWhereTechnicien(idTechnicien);
         }
 
         public static Technicien SelectWhereTechnicien(string email, string mdp)
@@ -74,9 +49,9 @@ namespace Depannage
         
        
 
-        public static Intervention SelectWhereIntervention(int idInter)
+        public static Produit_Like SelectWhereProduit_Like(int idInter)
         {
-            return unModele.SelectWhereIntervention(idInter);
+            return unModele.SelectWhereProduit_Like(idInter);
         }
 
         public static List<Client>SelectAllClient()
@@ -84,17 +59,10 @@ namespace Depannage
             return unModele.SelectAllClient();
         }
 
-        public static List<Technicien> SelectAllTechnicien()
+        public static List<Produit_Like> SelectAllProduit_Like()
         {
-            return unModele.SelectAllTechnicien();
+            return unModele.SelectAllProduit_Like();
         }
-
-        public static List<Intervention> SelectAllIntervention()
-        {
-            return unModele.SelectAllIntervention();
-        }
-
-
 
     }
 }

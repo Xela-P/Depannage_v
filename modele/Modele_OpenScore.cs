@@ -63,7 +63,7 @@ namespace Blank
             }
         }
 
-        public void InsertLike(Intervention uneIntervention)
+        public void InsertLike(Produit_Like unProduit_Like)
         {
             string requete = "insert into ProduitLike values(nul, @materiel,@prix,@dateinter, @idclient, @idtechnicien);";
             MySqlCommand uneCmde = null;
@@ -73,11 +73,11 @@ namespace Blank
                 uneCmde = this.maConnexion.CreateCommand();
                 uneCmde.CommandText = requete;
                 //les correspondances entre variables Mysql et C#
-                uneCmde.Parameters.AddWithValue("@materiel", uneIntervention.Materiel);
-                uneCmde.Parameters.AddWithValue("@prix", uneIntervention.Prix);
-                uneCmde.Parameters.AddWithValue("@dateinter", uneIntervention.Dateinter);
-                uneCmde.Parameters.AddWithValue("@idclient", uneIntervention.IdPersC);
-                uneCmde.Parameters.AddWithValue("@idtechnicien", uneIntervention.IdPersT);
+                uneCmde.Parameters.AddWithValue("@materiel", unProduit_Like.Materiel);
+                uneCmde.Parameters.AddWithValue("@prix", unProduit_Like.Prix);
+                uneCmde.Parameters.AddWithValue("@dateinter", unProduit_Like.Dateinter);
+                uneCmde.Parameters.AddWithValue("@idclient", unProduit_Like.IdPersC);
+                uneCmde.Parameters.AddWithValue("@idtechnicien", unProduit_Like.IdPersT);
                 uneCmde.ExecuteNonQuery();
                 this.maConnexion.Close();
             }
@@ -96,38 +96,12 @@ namespace Blank
 
 
 
-        public void DeleteClient(int idClient)
+
+
+
+        public void DeleteProduit_like(int idLike)
         {
-            string requete = "call deleteClient(@idclient);";
-            MySqlCommand uneCmde = null;
-            try
-            {
-                this.maConnexion.Open();
-                uneCmde = this.maConnexion.CreateCommand();
-                uneCmde.CommandText = requete;
-
-                uneCmde.Parameters.AddWithValue("@idclient", idClient);
-                uneCmde.ExecuteNonQuery();
-                this.maConnexion.Close();
-            }
-            catch (Exception exp)
-            {
-                Debug.WriteLine(uneCmde.CommandText);
-                foreach (MySqlParameter unParam in uneCmde.Parameters)
-                {
-                    Debug.WriteLine(unParam.ParameterName + ": " + unParam.Value);
-                }
-                Debug.WriteLine("Erreur de requete :" + requete);
-                Debug.WriteLine(exp.Message);
-            }
-
-        }
-
-
-
-        public void DeleteIntervention(int idInter)
-        {
-            string requete = "delete from intervention where idinter = @idinter;";
+            string requete = "delete from Produit_Like where idLike = @idLike && idclient = @idclient;";
             MySqlCommand uneCmde = null;
             try
             {
@@ -186,7 +160,7 @@ namespace Blank
             }
         }
 
-        public void UpdateIntervention(Intervention uneIntervention)    
+        public void UpdateIntervention(Intervention unProduit_Like)    
         {
             string requete = "update intervention set materiel = @materiel, prix = @prix, dateinter = @dateinter, idclient = @idclient, idtechnicien = @idtechnicien where idinter = @idinter;";
             MySqlCommand uneCmde = null;
@@ -196,13 +170,13 @@ namespace Blank
                 uneCmde = this.maConnexion.CreateCommand();
                 uneCmde.CommandText = requete;
                 //les correspondances entre variables MYSQL ET C#
-                uneCmde.Parameters.AddWithValue("@idinter", uneIntervention.IdInter);
+                uneCmde.Parameters.AddWithValue("@idinter", unProduit_Like.IdInter);
 
-                uneCmde.Parameters.AddWithValue("@materiel", uneIntervention.Materiel);
-                uneCmde.Parameters.AddWithValue("@prix", uneIntervention.Prix);
-                uneCmde.Parameters.AddWithValue("@dateinter", uneIntervention.Dateinter);
-                uneCmde.Parameters.AddWithValue("@idclient", uneIntervention.IdPersC);
-                uneCmde.Parameters.AddWithValue("@idtechnicien", uneIntervention.IdPersT);
+                uneCmde.Parameters.AddWithValue("@materiel", unProduit_Like.Materiel);
+                uneCmde.Parameters.AddWithValue("@prix", unProduit_Like.Prix);
+                uneCmde.Parameters.AddWithValue("@dateinter", unProduit_Like.Dateinter);
+                uneCmde.Parameters.AddWithValue("@idclient", unProduit_Like.IdPersC);
+                uneCmde.Parameters.AddWithValue("@idtechnicien", unProduit_Like.IdPersT);
                 uneCmde.ExecuteNonQuery();
                 this.maConnexion.Close();
             }
@@ -302,7 +276,7 @@ namespace Blank
                         while (unReader.Read())
                         {
                             //instanciation d'un client
-                            Intervention uneIntervention = new Intervention(
+                            Intervention unProduit_Like = new Intervention(
                                 unReader.GetInt16(0),
                                 unReader.GetString(1),
                                 unReader.GetString(2),
@@ -311,7 +285,7 @@ namespace Blank
                                 unReader.GetInt16(5)
                                 );
                             //ajouter dans la liste
-                            lesInterventions.Add(uneIntervention);
+                            lesInterventions.Add(unProduit_Like);
                         }
                     }
                 }
@@ -406,7 +380,7 @@ namespace Blank
         public Intervention SelectWhereIntervention(int idInter)
         {
             string requete = "select * from intervention where idinter = @idinter;";
-            Intervention uneIntervention = null;
+            Intervention unProduit_Like = null;
             MySqlCommand uneCmde = null;
             try
             {
@@ -425,7 +399,7 @@ namespace Blank
                         {
                             //instanciation d'un client
 
-                            uneIntervention = new Intervention(
+                            unProduit_Like = new Intervention(
                                 unReader.GetInt32(0),
                                 unReader.GetString(1),
                                 unReader.GetString(2),
@@ -458,7 +432,7 @@ namespace Blank
                 Debug.WriteLine("Erreur de requete :" + requete);
                 Debug.WriteLine(exp.Message);
             }
-            return uneIntervention;
+            return unProduit_Like;
 
         }
 
