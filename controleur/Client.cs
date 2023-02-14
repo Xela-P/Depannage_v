@@ -6,10 +6,11 @@ using System.Text;
 
 namespace Depannage
 {
-    public class Client
+    public class Client 
     {
         private int idClient;
         private string nom, prenom, adresse, mail, mdp;
+        private List<Produit> mesProduits ; 
         public Client()
         {
             this.idClient = 0;
@@ -18,6 +19,7 @@ namespace Depannage
             this.adresse ="";
             this.mail = "";
             this.mdp = "";
+            this.mesProduits = new List<Produit>();
         }
 
         public Client(int idClient, string nom, string prenom, string mail, string mdp, string adresse)
@@ -28,6 +30,7 @@ namespace Depannage
             this.adresse = adresse;
             this.mail = mail;
             this.mdp = mdp;
+            this.mesProduits = new List<Produit>();
         }
 
         public Client(int idClient, string nom, string prenom, string mail, string adresse)
@@ -38,6 +41,7 @@ namespace Depannage
             this.adresse = adresse;
             this.mail = mail;
             this.mdp = mdp;
+            this.mesProduits = new List<Produit>();
         }
 
 
@@ -75,6 +79,10 @@ namespace Depannage
         public string mdp
         {
             get => this.mdp; set => this.mdp = value;
+        }
+        public List<Produit> mesProduits
+        {
+            get => this.mesProduits; set => this.mesProduits = value;
         }
     }
 }
