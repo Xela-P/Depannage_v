@@ -56,31 +56,31 @@ namespace Depannage
             this.mdp = mdp;
         }
 
-        public string adresse
+        public string Adresse
         {
             get => this.adresse; set => this.adresse = value;
         }
-        public string idClient
+        public string IdClient
         {
             get => this.idClient; set => this.idClient = value;
         }
-        public string nom
+        public string Nom
         {
             get => this.nom; set => this.nom = value;
         }
-        public string prenom
+        public string Prenom
         {
             get => this.prenom; set => this.prenom = value;
         }
-        public string mail
+        public string Mail
         {
             get => this.mail; set => this.mail = value;
         }
-        public string mdp
+        public string Mdp
         {
             get => this.mdp; set => this.mdp = value;
         }
-        public List<Produit> mesProduits
+        public List<Produit> MesProduits
         {
             get => this.mesProduits; set => this.mesProduits = value;
         }

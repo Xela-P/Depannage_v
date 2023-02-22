@@ -32,11 +32,6 @@ namespace Depannage
             unModele.UpdateClient(unClient);
         }
 
-        public static void UpdateProduit_Like(Produit_Like unProduit_Like)
-        {
-            unModele.UpdateProduit_Like(unProduit_Like);
-        }
-
         public static Client SelectWhereClient(int idClient)
         {
             return unModele.SelectWhereClient(idClient);
@@ -59,10 +54,6 @@ namespace Depannage
             return unModele.SelectAllClient();
         }
 
-        public static List<Produit_Like> SelectAllProduit_Like()
-        {
-            return unModele.SelectAllProduit_Like();
-        }
 
     }
 }
